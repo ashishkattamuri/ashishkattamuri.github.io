@@ -1,45 +1,304 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-<style>
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $(".tabs-menu a").click(function(event) {
+        event.preventDefault();
+        $(this).parent().addClass("current");
+        $(this).parent().siblings().removeClass("current");
+        var tab = $(this).attr("href");
+        $(".tab-content").not(tab).css("display", "none");
+        $(tab).fadeIn();
+    });
+});
+</script>
+
+<script>
+$(document).ready(function()
+{
+    //slides the element with class "menu_body" when paragraph with class "menu_head" is clicked 
+    $("#firstpane p.menu_head").click(function()
+    {
+        $(this).css({backgroundImage:"url(down.png)"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
+        $(this).siblings().css({backgroundImage:"url(left.png)"});
+    });
+    //slides the element with class "menu_body" when mouse is over the paragraph
+    $("#secondpane p.menu_head").mouseover(function()
+    {
+         $(this).css({backgroundImage:"url(down.png)"}).next("div.menu_body").slideDown(500).siblings("div.menu_body").slideUp("slow");
+         $(this).siblings().css({backgroundImage:"url(left.png)"});
+    });
+});
+</script>
+
+
+<!-- CSS for accordion menu--> 
+<style type="text/css">
+
+
+.menu_list {    
+    width: 70%px;
+	text-align:left;
+}
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+    margin:1px;
+    font-weight:bold;
+    background: #eef4d3 url(left.png) center right no-repeat;
+}
+.menu_body {
+    display:none;
+}
+.menu_body a{
+  display:block;
+  color:#006699;
+  background-color:#EFEFEF;
+  padding-left:10px;
+  font-weight:bold;
+  text-decoration:none;
 }
 
-li {
-    float: center;
+.menu_body a:hover{
+  color: #000000;
+  text-decoration:underline;
+  }
+</style>
+
+<style>
+
+
+body{
+	font-family:"Comic Sans MS";
+	font-size: 15px;
+	
+}
+
+.head{
+    width: 50px;
+    height: 60px;
+}
+
+
+.tabs-menu {
+  align: center;	
+  list-style: none;
+  padding: 0;
+  width: 40%;
+  margin: auto;
+}
+
+li  {
+    
 	display: inline;
 }
 
 li a {
-    display: inline;
-    color: white;
+	
+    color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0px 14px;
     text-decoration: none;
+	font-family:"Comic Sans MS";
+	font-size: 15px;
+	
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color: grey;
+	border-radius: 20px;
+	opacity: 0.5;
 }
 
-.active {
-    background-color: #4CAF50;
+.current {
+    background-color: grey;
+	border-radius: 20px;
 }
+
+.tab-content {
+    
+    width: 80%;
+    padding: 40px;
+    display: none;
+	margin: 0 auto; 
+	text-align: center;
+}
+
+#tab-1 {
+ display: block;   
+}
+
 </style>
-</head>
-<body>
 
-<ul>
-  <li><a class="active" href="#home">ABOUT ME</a></li>
-  <li><a href="#">EDUCATION</a></li>
-  <li><a href="#">EXPERIENCE</a></li>
-  <li><a href="#">SKILLS</a></li>
+</head>
+
+<body>
+<div class="head">
+</div>
+<div id="tabs-container">
+    <ul class="tabs-menu">
+        <li class="current"><a href="#tab-1">About Me</a></li>
+        <li><a href="#tab-2"> Education </a></li>
+        <li><a href="#tab-3"> Experience</a></li>
+        <li><a href="#tab-4"> Skills </a></li>
+		<li><a href="#tab-5"> Projects </a></li>
+		
+    </ul>
+    <div class="tab">
+        <div id="tab-1" class="tab-content" align:"center" style="width:70%">
+			
+			<p align="center" >
+			<img src="fb_dp1.png" style="width:180px; height:180px"> </img>
+			<h2> Ashish Kattamuri </h2>
+			<p>
+		    <p style="text-align:left"> I am recent graduate with MASTER'S in Computer Science from Colorado State University, Colorado, USA. My area of focus in MASTER'S is in Artificial Intelligence, Big Data and Algorithms. 
+			<br/><br/>I have worked in different domains and disciplines in Infomation Technology with 3+ years of experience and practiced various technologies.
+			I never fear to try new things and continous learning helped me gain expertise over different technologies.
+			</p>
+			<p align="center"> <br/>
+			<a href="https://www.linkedin.com/in/ashishkattamuri" target="_blank"> Linkedin Profile </a> &nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="https://github.com/ashishkattamuri/" target="_blank"> Github Profile </a>
+			</p>
+			
+        </div>
+        
+		<div id="tab-2" class="tab-content">
+		
+		<table cellspacing="10" cellpadding="10" width="90%">
+			<tr style="vertical-align: top;">
+				<td width="10%"><img src="csuLogo.png" style="width:80px; height:80px"> </img></td>
+				<td width="60%"> 
+				<b>Colorado State University </b> <br/> 
+				Masters, Computer Science <br/><br/>
+				<b>Course work </b>: Big Data, Distributed Systems, Introduction to AI, Advanced Artificial Intelligence, Algorithms, Machine learning, Software process Evaluation, Fault tolerance.
+				
+				</td>
+				<td width="30%">
+				<img src="gradLogo.png" style="width:30px; height:30px" >	
+				&nbsp; Aug 2014 - Dec 2015  
+				
+				</td>
+			</tr>
+			</table>
+			<hr/>
+			<table cellspacing="10" cellpadding="10" width="90%">
+			<tr style="vertical-align: top;">
+				<td width="10%"><img src="gitamLogo.png" style="width:80px; height:80px"> </img></td>
+				<td width="60%"> 
+				<b>GITAM University, India </b> <br/> 
+				Bachelors, Computer Science <br/><br/>
+				
+				-  Developed mobile application for CSE Syllabus content <br/>
+				Course syllabus content are the most frequently visited page on the university website and is used extensively during  the examinations by the students. To ease the user pain in navigating to the specific pages and for easy reference we initiated this project which assisted students in preparation and app is most popular among the students at University.
+
+				</td>
+				<td width="30%"> 
+				<img src="gradLogo.png" style="width:30px; height:30px" >	
+				&nbsp;June 2008 - May 2012</td>
+			</tr>
+		</table>
+		</p>
+		</div>
+		
+        <div id="tab-3" class="tab-content">
+            
+		<div class="menu_list" id="secondpane"> <!--Code for menu starts here-->
+        <p class="menu_head"> 
+		<table>
+		<tr> 
+		<td width="70%"><b> Graduate Teaching Assistant, Colorado State University<td> 
+		<td width="30%"> Aug 2015- Dec 2015<td>
+		</tr>
+		</table>
+		
+		</p>
+        <div class="menu_body">
+        <ul type="square">
+			<li style="display:block">- Perform lab research and assist students with coursework in Algorithms and Data Structures. </li>
+			<li style="display:block">- Mentor students and deliver lectures in recitations. </li>
+		<ul>
+		</div>
+        
+		<p class="menu_head">
+		<table><tr> 
+		<td width="70%"><b> Game/AI programmer, Serenity Forge, Boulder, CO<td> 
+		<td width="30%"> May 2015- Aug 2015<td>
+		</tr></table>
+		</p>
+		     
+		<div class="menu_body">
+		<ul type="square">
+           <li style="display:block">- Designed and developed a 3D action platform and puzzle videogame for PC titled 'Eternal Us' using UNITY and C#. </li>
+<li style="display:block">- Worked on all aspects of programming and asset integration such as models and textures.</li>
+<li style="display:block">- Programmed for simulating physics, AI for pathfinding and control of second character which is augmented to primary character actions which is controlled by player. 
+Created camera views and cinematics.</li>
+<li style="display:block">- Associated in the level design, game mechanics and worked with artists & developers of the team. </li>
 </ul>
 
+         </div>
+        
+		<p class="menu_head">
+		<table>
+		<tr> 
+		<td width="70%"><b> Web developer, NREL, Colorado State University <td> 
+		<td width="30%"> Oct 2014- Aug 2015<td>
+		</tr>
+		</table>
+		</p>
+		<div class="menu_body">
+		<ul>
+		<li style="block">- Developed new and enhanced the existing data visualization and data analysis tools for 'citsci.org' using Highcharts.js library. </li>
+		<li style="block">- Optimized applications and features in citsci.org for improved response time.</li>
+		</ul>
+		</div>
+		
+		<p class="menu_head">
+		<table>
+		<tr> 
+		<td width="70%"><b> Software Engineer, Tata Consultancy Services, India<td> 
+		<td width="30%"> Jun 2012- Jul 2014<td>
+		</tr>
+		</table>
+		</p>
+		        <div class="menu_body">
+            <ul>
+			<li style="display: block"> - Developed standalone utility in JAVA for checking system configurations and change the browser settings as required to run the Form Signer components (an advanced digital certificate based application that provides Authentication and non-repudiation to online forms).
+ </li>
+			<li style="display: block"> - Enhanced the Online PAN Verification Facility which is used by authorized entities. </li>
+			<li style="display: block"> - Developed web applications for TIN, NSDL:  to provide the facility for users to pay income and property tax online,  2 tier approval system for approving the registered entities and developed role based functionality system and developed e-payment and feedback system for accounting system in excise & service tax</li>
+			<li style="display: block"> Resolve the security vulnerabilities in the application.</li>
+			<li style="display: block">- Developed tools and shell scripts to automate production tasks</li>
+			</ul>
+         </div>
+		 
+		 
+		 
+		<p class="menu_head">
+		<table>
+		<tr> 
+		<td width="70%"><b> Android developer- Intern, Naaima Embedded Tech, India<td> 
+		<td width="30%"> Jan 2012- Mar 2012<td>
+		</tr>
+		</table>
+		</p>
+		<div class="menu_body">
+		- Developed facebook application with customized UI using facebook Graph API on VovinetTV, an IP based android set-top boxes, which is now operational in more than 50 thousand homes.
+         </div>
+		
+		
+		</div>      <!--Code for menu ends here-->
+			
+        </div>
+		
+		
+        <div id="tab-4" class="tab-content">
+            <p>Proin sollicitudin tincidunt quam, in egestas dui tincidunt non. Maecenas tempus condimentum mi, sed convallis tortor iaculis eu. </p>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
